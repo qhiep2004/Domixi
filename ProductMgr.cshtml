@@ -1,0 +1,31 @@
+@model IEnumerable<MVC04.Models.Product>
+
+<h2>Quản lý hàng hóa</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>Tên hàng</th>
+            <th>Đơn giá</th>
+            <th>Mô tả</th>
+            <th>Xử lý</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model.Select((value, index) => new { value, index }))
+        {
+            <tr>
+                <td>@(product.index + 1)</td>
+                <td>@product.value.ProductName</td>
+                <td>@string.Format("{0:N0} VND", product.value.ProductPrice)</td>
+                <td>@product.value.Description</td>
+                <td>
+                    <form asp-action="Delete" asp-route-id="@product.value.ProductID" method="post" onsubmit="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này?');">
+                        <button type="submit" class="btn btn-danger">Xóa</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

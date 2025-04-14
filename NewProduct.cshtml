@@ -1,0 +1,23 @@
+@model MVC04.Models.Product
+
+<h2>Thêm sản phẩm mới</h2>
+
+<form asp-action="NewProduct" method="post">
+    <div class="form-group">
+        <label for="ProductName">Tên sản phẩm</label>
+        <input type="text" class="form-control" id="ProductName" name="ProductName" required />
+    </div>
+    <div class="form-group">
+        <label for="ImageURL">URL Ảnh</label>
+        <input type="text" class="form-control" id="ImageURL" name="ImageURL" required />
+    </div>
+    <div class="form-group">
+        <label for="ProductPrice">Giá sản phẩm</label>
+        <input type="number" class="form-control" id="ProductPrice" name="ProductPrice" min="0" required />
+    </div>
+    <div class="form-group">
+        <label for="Description">Mô tả</label>
+        <textarea class="form-control" id="Description" name="Description"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Thêm sản phẩm</button>
+</form>
